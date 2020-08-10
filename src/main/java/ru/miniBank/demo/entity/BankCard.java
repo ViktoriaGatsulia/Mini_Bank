@@ -1,26 +1,26 @@
 package ru.miniBank.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.cql.Ordering;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.*;
-
 import java.util.Date;
 
-import static org.springframework.data.cassandra.core.mapping.CassandraType.Name.INT;
-import static org.springframework.data.cassandra.core.mapping.CassandraType.Name.VARCHAR;
-
+/**
+ * Класс-сущность для карты пользователя банка MiniBank
+ * @autor ViktoriaGatsulia
+ * @version 1.0
+ */
 @UserDefinedType("bankCard")
 @Table("bankCard")
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString
 public class BankCard {
 
+    /** Поле идентификатора карты */
     @Id
     @PrimaryKeyColumn(
             name = "card_id",
@@ -30,15 +30,19 @@ public class BankCard {
     )
     private Long card_id;
 
+    /** Дата до которой действует банковская карта */
     @Column
     private Date card_expiry_date;
 
+    /** Защитный код */
     @Column
     private Integer cvc2;
 
+    /** Номер банковской карты */
     @Column
     private String card_number;
 
+    /** Баланс банковской карты */
     @Column
     private Double balance;
 

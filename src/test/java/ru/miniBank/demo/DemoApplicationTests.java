@@ -27,26 +27,38 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Класс для тестирований Spring приложения
+ * @autor ViktoriaGatsulia
+ * @version 1.0
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 class DemoApplicationTests {
-    /*
-        Способ тестирования конечных точек:
-        имитационная среда класс MockMvc
-    */
+    /**
+     * Способ тестирования конечных точек:
+     * имитационная среда класс MockMvc
+     */
     @Autowired
     private MockMvc mvc;
 
-    /*
-        Аннотация @MockBean, описывает имитационный объект Mockito
-        для компонента в Applicationcontext
-    */
+    /**
+     * Аннотация @MockBean, описывает имитационный объект Mockito
+     * для компонента bankUserService в Applicationcontext
+     */
     @MockBean
     private BankUserService bankUserService;
 
+    /**
+     * Аннотация @MockBean, описывает имитационный объект Mockito
+     * для компонента bankCardService в Applicationcontext
+     */
     @MockBean
     private BankCardService bankCardService;
 
+    /**
+     * Тест для BankUserService для метода findById
+     */
     @Test
     public void testFindBankUserById() {
         List<BankCard> bankCards = new ArrayList<>();
@@ -55,6 +67,9 @@ class DemoApplicationTests {
         assertThat(this.bankUserService.findById(1L).get().getBankCard()).isEqualTo(bankCards);
     }
 
+    /**
+     * Тест для BankCardService для метода findById
+     */
     @Test
     public void testFindBankCardById() {
         BankCard bankCard = new BankCard(1L, new Date(), 123, "1234 1234 1234 1234", 100D);
@@ -62,6 +77,10 @@ class DemoApplicationTests {
         assertThat(this.bankCardService.findById(1L).get().getBalance()).isEqualTo(100D);
     }
 
+    /**
+     * Тест для MainController по отображению стартовой страницы
+     * @throws Exception
+     */
     @Test
     public void testViewShowStartPage() throws Exception {
         this.mvc
@@ -70,7 +89,11 @@ class DemoApplicationTests {
                 string("hello"));
     }
 
-
+    /**
+     * Тест для MainController
+     * Проверка корректности сохранения нового пользователя (PostMapping)
+     * @throws Exception
+     */
     @Test
     public void testViewSaveBankUser() throws Exception {
         this.mvc
@@ -84,6 +107,11 @@ class DemoApplicationTests {
                         .string("{\"user_id\":1,\"userName\":\"Viktoria\",\"bankCard\":null}"));
     }
 
+    /**
+     * Тест для MainController
+     * Проверка корректности поиска пользователя по id (GetMapping)
+     * @throws Exception
+     */
     @Test
     public void testViewUserFindById() throws Exception {
         List<BankCard> bankCards = new ArrayList<>();
@@ -97,6 +125,11 @@ class DemoApplicationTests {
                 string("{\"user_id\":1,\"userName\":\"Viktoria\",\"bankCard\":[{\"card_id\":1,\"card_expiry_date\":\"1970-01-01T00:00:10.000+00:00\",\"cvc2\":123,\"card_number\":\"1234 1234 1234 1234\",\"balance\":100.0}]}"));
     }
 
+    /**
+     * Тест для MainController
+     * Проверка корректности поиска несуществующего пользователя (GetMapping)
+     * @throws Exception
+     */
     @Test
     public void testViewUserFindByIdNotFound() throws Exception {
         this.mvc.perform(get("/user_id=2").accept(MediaType.APPLICATION_JSON))
