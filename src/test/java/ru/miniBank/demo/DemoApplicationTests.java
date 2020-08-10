@@ -136,6 +136,48 @@ class DemoApplicationTests {
                 .andExpect(status().isNotFound());
     }
 
+
+    /**
+     * Тест для MainController
+     * Проверка корректности сохранения новой банковской карты (PostMapping)
+     * @throws Exception
+     */
+    @Test
+    public void testViewSaveBankCard() throws Exception {
+        this.mvc
+                .perform(post("/saveBankCard").contentType(MediaType.APPLICATION_JSON).content("{\"card_id\":1,\"card_expiry_date\":\"1970-01-01T00:00:10.000+00:00\",\"cvc2\":123,\"card_number\":\"1234 1234 1234 1234\",\"balance\":100.0}"))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .string("{\"card_id\":1,\"card_expiry_date\":\"1970-01-01T00:00:10.000+00:00\",\"cvc2\":123,\"card_number\":\"1234 1234 1234 1234\",\"balance\":100.0}"));
+    }
+
+    /**
+     * Тест для MainController
+     * Проверка корректности поиска банковской карты по id (GetMapping)
+     * @throws Exception
+     */
+    @Test
+    public void testViewCardFindById() throws Exception {
+        BankCard bankCard = new BankCard(1L, new Date(10000), 123, "1234 1234 1234 1234", 100D);
+
+        given(this.bankCardService.findById(1L))
+                .willReturn(java.util.Optional.of(bankCard));
+        this.mvc.perform(get("/card_id=1").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk()).andExpect(content().
+                string("{\"card_id\":1,\"card_expiry_date\":\"1970-01-01T00:00:10.000+00:00\",\"cvc2\":123,\"card_number\":\"1234 1234 1234 1234\",\"balance\":100.0}"));
+    }
+
+    /**
+     * Тест для MainController
+     * Проверка корректности поиска несуществующей банковской карты (GetMapping)
+     * @throws Exception
+     */
+    @Test
+    public void testViewCardFindByIdNotFound() throws Exception {
+        this.mvc.perform(get("/card_id=2").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
 }
 
 // .andExpect(status().isOk()) - код возврата был 200?

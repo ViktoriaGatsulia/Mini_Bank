@@ -52,7 +52,7 @@ public class MainController {
      * @return bankUser - сохранённый пользователь (MediaType.APPLICATION_JSON)
      */
     @PostMapping("/saveBankUser")
-    public ResponseEntity saveBankUser(@RequestBody BankUser bankUser ) {
+    public ResponseEntity saveBankUser(@RequestBody BankUser bankUser) {
         bankUserService.save(bankUser);
         return ResponseEntity.ok(bankUser);
     }
@@ -75,8 +75,8 @@ public class MainController {
      * @param bankCard - кандидат на сохранение
      * @return bankCard - сохранённая банковская карта (MediaType.APPLICATION_JSON)
      */
-    @PostMapping("/saveBankUser")
-    public ResponseEntity saveBankCard(@RequestBody BankCard bankCard ) {
+    @PostMapping("/saveBankCard")
+    public ResponseEntity saveBankCard(@RequestBody BankCard bankCard) {
         bankCardService.save(bankCard);
         return ResponseEntity.ok(bankCard);
     }
