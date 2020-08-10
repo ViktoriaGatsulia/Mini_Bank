@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import ru.miniBank.demo.entity.BankCard;
 import ru.miniBank.demo.entity.BankUser;
 import ru.miniBank.demo.service.BankCardService;
 import ru.miniBank.demo.service.BankUserService;
@@ -48,7 +49,7 @@ public class MainController {
     /**
      * Post метод для сохранения пользователя
      * @param bankUser - кандидат на сохранение
-     * @return bankUser (MediaType.APPLICATION_JSON)
+     * @return bankUser - сохранённый пользователь (MediaType.APPLICATION_JSON)
      */
     @PostMapping("/saveBankUser")
     public ResponseEntity saveBankUser(@RequestBody BankUser bankUser ) {
@@ -59,11 +60,35 @@ public class MainController {
     /**
      * Get метод для поиска пользователя по id
      * @param user_id - индентификатор пользователя
-     * @return bankUser (MediaType.APPLICATION_JSON)
+     * @return bankUser - найденный пользователь (MediaType.APPLICATION_JSON)
      */
     @GetMapping("/user_id={user_id}")
     public ResponseEntity findBankUserById(@PathVariable Long user_id) {
         Optional<BankUser> byId = bankUserService.findById(user_id);
+        return !byId.isPresent()
+                ? ResponseEntity.notFound().build()
+                : ResponseEntity.ok(byId);
+    }
+
+    /**
+     * Post метод для сохранения банковской карты
+     * @param bankCard - кандидат на сохранение
+     * @return bankCard - сохранённая банковская карта (MediaType.APPLICATION_JSON)
+     */
+    @PostMapping("/saveBankUser")
+    public ResponseEntity saveBankCard(@RequestBody BankCard bankCard ) {
+        bankCardService.save(bankCard);
+        return ResponseEntity.ok(bankCard);
+    }
+
+    /**
+     * Get метод для поиска банковской карты по id
+     * @param card_id - индентификатор банковской карты
+     * @return bankCard - сохранённая банковская карта (MediaType.APPLICATION_JSON)
+     */
+    @GetMapping("/card_id={card_id}")
+    public ResponseEntity findBankCardById(@PathVariable Long card_id) {
+        Optional<BankCard> byId = bankCardService.findById(card_id);
         return !byId.isPresent()
                 ? ResponseEntity.notFound().build()
                 : ResponseEntity.ok(byId);
