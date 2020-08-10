@@ -31,6 +31,6 @@ public class BankUser {
     private String userName;
 
     @CassandraType(type = CassandraType.Name.LIST, typeArguments = {CassandraType.Name.UDT}, userTypeName = "bankCard")
-    private List<BankCard> bankCards;
+    private List<BankCard> bankCard;
 
 }
