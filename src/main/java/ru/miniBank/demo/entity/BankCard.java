@@ -7,6 +7,7 @@ import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.*;
 import java.util.Date;
 
+
 /**
  * Класс-сущность для карты пользователя банка MiniBank
  * @autor ViktoriaGatsulia
@@ -46,8 +47,8 @@ public class BankCard {
     @Column
     private Double balance;
 
-//    @CassandraType(type = CassandraType.Name.ASCII/VARCHAR/INT)
-//    @Column
-//    private CategoryCard categoryCard;
+    /** Категория банковской карты */
+    @CassandraType(type = CassandraType.Name.VARCHAR)
+    private CategoryCard categoryCard;
 
 }

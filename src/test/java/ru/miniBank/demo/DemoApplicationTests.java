@@ -79,7 +79,7 @@ class DemoApplicationTests {
 
     /**
      * Тест для MainController по отображению стартовой страницы
-     * @throws Exception
+     * @throws Exception - отлавливаются любые исключения
      */
     @Test
     public void testViewShowStartPage() throws Exception {
@@ -92,7 +92,7 @@ class DemoApplicationTests {
     /**
      * Тест для MainController
      * Проверка корректности сохранения нового пользователя (PostMapping)
-     * @throws Exception
+     * @throws Exception - отлавливаются любые исключения
      */
     @Test
     public void testViewSaveBankUser() throws Exception {
@@ -110,7 +110,7 @@ class DemoApplicationTests {
     /**
      * Тест для MainController
      * Проверка корректности поиска пользователя по id (GetMapping)
-     * @throws Exception
+     * @throws Exception - отлавливаются любые исключения
      */
     @Test
     public void testViewUserFindById() throws Exception {
@@ -128,7 +128,7 @@ class DemoApplicationTests {
     /**
      * Тест для MainController
      * Проверка корректности поиска несуществующего пользователя (GetMapping)
-     * @throws Exception
+     * @throws Exception - отлавливаются любые исключения
      */
     @Test
     public void testViewUserFindByIdNotFound() throws Exception {
@@ -140,7 +140,7 @@ class DemoApplicationTests {
     /**
      * Тест для MainController
      * Проверка корректности сохранения новой банковской карты (PostMapping)
-     * @throws Exception
+     * @throws Exception - отлавливаются любые исключения
      */
     @Test
     public void testViewSaveBankCard() throws Exception {
@@ -154,7 +154,7 @@ class DemoApplicationTests {
     /**
      * Тест для MainController
      * Проверка корректности поиска банковской карты по id (GetMapping)
-     * @throws Exception
+     * @throws Exception - отлавливаются любые исключения
      */
     @Test
     public void testViewCardFindById() throws Exception {
@@ -170,7 +170,7 @@ class DemoApplicationTests {
     /**
      * Тест для MainController
      * Проверка корректности поиска несуществующей банковской карты (GetMapping)
-     * @throws Exception
+     * @throws Exception - отлавливаются любые исключения
      */
     @Test
     public void testViewCardFindByIdNotFound() throws Exception {
