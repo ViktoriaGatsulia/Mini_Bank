@@ -15,7 +15,7 @@
 
 ### При возникновении ошибок
 
-  $ nodetool status  
+  $ sudo nodetool status  
   error: null  
   — StackTrace —  
   java.lang.NullPointerException  
