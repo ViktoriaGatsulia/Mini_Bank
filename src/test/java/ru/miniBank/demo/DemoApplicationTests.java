@@ -13,6 +13,7 @@ import java.util.Date;
 
 import ru.miniBank.demo.entity.BankCard;
 import ru.miniBank.demo.entity.BankUser;
+import ru.miniBank.demo.entity.CategoryCard;
 import ru.miniBank.demo.service.BankCardService;
 import ru.miniBank.demo.service.BankUserService;
 
@@ -62,7 +63,7 @@ class DemoApplicationTests {
     @Test
     public void testFindBankUserById() {
         List<BankCard> bankCards = new ArrayList<>();
-        bankCards.add(new BankCard(1L, new Date(), 123, "1234 1234 1234 1234", 100D));
+        bankCards.add(new BankCard(1L, new Date(), 123, "1234 1234 1234 1234", 100D, CategoryCard.MIR));
         given(this.bankUserService.findById(1L)).willReturn(java.util.Optional.of(new BankUser(1L, "Viktoria", bankCards)));
         assertThat(this.bankUserService.findById(1L).get().getBankCard()).isEqualTo(bankCards);
     }
@@ -72,7 +73,7 @@ class DemoApplicationTests {
      */
     @Test
     public void testFindBankCardById() {
-        BankCard bankCard = new BankCard(1L, new Date(), 123, "1234 1234 1234 1234", 100D);
+        BankCard bankCard = new BankCard(1L, new Date(), 123, "1234 1234 1234 1234", 100D, CategoryCard.MIR);
         given(this.bankCardService.findById(1L)).willReturn(java.util.Optional.of(bankCard));
         assertThat(this.bankCardService.findById(1L).get().getBalance()).isEqualTo(100D);
     }
@@ -115,14 +116,14 @@ class DemoApplicationTests {
     @Test
     public void testViewUserFindById() throws Exception {
         List<BankCard> bankCards = new ArrayList<>();
-        bankCards.add(new BankCard(1L, new Date(10000), 123, "1234 1234 1234 1234", 100D));
+        bankCards.add(new BankCard(1L, new Date(10000), 123, "1234 1234 1234 1234", 100D, CategoryCard.MIR));
         BankUser bankUser = new BankUser(1L, "Viktoria", bankCards);
 
         given(this.bankUserService.findById(1L))
                 .willReturn(java.util.Optional.of(bankUser));
         this.mvc.perform(get("/user_id=1").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()).andExpect(content().
-                string("{\"user_id\":1,\"userName\":\"Viktoria\",\"bankCard\":[{\"card_id\":1,\"card_expiry_date\":\"1970-01-01T00:00:10.000+00:00\",\"cvc2\":123,\"card_number\":\"1234 1234 1234 1234\",\"balance\":100.0}]}"));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     /**
@@ -147,8 +148,7 @@ class DemoApplicationTests {
         this.mvc
                 .perform(post("/saveBankCard").contentType(MediaType.APPLICATION_JSON).content("{\"card_id\":1,\"card_expiry_date\":\"1970-01-01T00:00:10.000+00:00\",\"cvc2\":123,\"card_number\":\"1234 1234 1234 1234\",\"balance\":100.0}"))
                 .andExpect(status().isOk())
-                .andExpect(content()
-                        .string("{\"card_id\":1,\"card_expiry_date\":\"1970-01-01T00:00:10.000+00:00\",\"cvc2\":123,\"card_number\":\"1234 1234 1234 1234\",\"balance\":100.0}"));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     /**
@@ -158,13 +158,13 @@ class DemoApplicationTests {
      */
     @Test
     public void testViewCardFindById() throws Exception {
-        BankCard bankCard = new BankCard(1L, new Date(10000), 123, "1234 1234 1234 1234", 100D);
+        BankCard bankCard = new BankCard(1L, new Date(10000), 123, "1234 1234 1234 1234", 100D, CategoryCard.MIR);
 
         given(this.bankCardService.findById(1L))
                 .willReturn(java.util.Optional.of(bankCard));
         this.mvc.perform(get("/card_id=1").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()).andExpect(content().
-                string("{\"card_id\":1,\"card_expiry_date\":\"1970-01-01T00:00:10.000+00:00\",\"cvc2\":123,\"card_number\":\"1234 1234 1234 1234\",\"balance\":100.0}"));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     /**
