@@ -40,4 +40,10 @@ public class BankUser {
     @CassandraType(type = CassandraType.Name.LIST, typeArguments = {CassandraType.Name.UDT}, userTypeName = "bankCard")
     private List<BankCard> bankCard;
 
+//    /** Счёт пользователя - сумма сбережений со всех карт */
+//    @CassandraType()
+//    private BankAccount bankAccount;
 }
+/*
+    $ curl -H 'Content-Type:application/json' -d '{"user_id" : 1, "userName" : "Viktoria", "bankCard" : null}' '127.0.0.1:8080/saveBankUser'
+ */

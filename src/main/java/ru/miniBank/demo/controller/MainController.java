@@ -16,7 +16,7 @@ import java.util.Optional;
  * @autor ViktoriaGatsulia
  * @version 1.0
  */
-@Controller
+@RestController
 @RequestMapping("/")
 public class MainController {
 

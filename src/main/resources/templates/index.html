@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <style>
+body {
+  margin: 0;
+}
+header {
+  background: #008000;
+  height: 100px;
+}
+.main {
+  background: #008000;
+  height: 500px;
+}
+
+.mainCenter {
+  width: 100%;
+  max-width: 1024px;
+  padding: 0 15px;
+  margin: 0 auto;
+  background: #008000;
+  height: 100%;
+}
+
+footer {
+  background: #008000;
+  height: 70px;
+}
+
+.container1 {
+  float: left;
+  width: 26.5%;
+  max-width: 1024px;
+  padding: 0 15px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  height: 100%;
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
+}
+
+.containerBuffer {
+  float: right;
+  width: 3%;
+  max-width: 1024px;
+  padding: 0 15px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.container2 {
+  float: right;
+  width: 26.5%;
+  max-width: 1024px;
+  padding: 0 15px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  height: 100%;
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
+  position: relative;
+  z-index:1;
+}
+
+.container3 {
+  float: right;
+  width: 26.5%;
+  max-width: 1024px;
+  padding: 0 15px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  height: 100%;
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
+}
+
+.btn-group .button {
+  width: 100%;
+  background-color: #008000; /* Green */
+  border: 1px solid green;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  padding: 15px 32px;
+  margin: 15px 0px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.50);
+}
+
+.btn-group .button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  background-color: #228B22;
+}
+
+.container_1 {
+  float: center;
+  width: 85%;
+  padding: 0 15px;
+  margin: 15px auto;
+  background: #EEE8AA;
+  height: 80%;
+}
+
+.container_2 {
+  float: center;
+  width: 85%;
+  padding: 0 15px;
+  margin: 15px auto;
+  height: 15%;
+}
+
+.container_3 {
+  float: center;
+  width: 85%;
+  padding: 0 15px;
+  margin: 15px auto;
+  background: #EEE8AA;
+  height: 53%;
+}
+
+.container_4 {
+  float: center;
+  width: 85%;
+  padding: 0 15px;
+  margin: 15px auto;
+  background: #FFFFFF;
+  height: 37%;
+}
+
+.container_5 {
+  float: center;
+  width: 85%;
+  padding: 0 15px;
+  margin: 15px auto;
+  background: #EEE8AA;
+  height: 45%;
+}
+
+.container_6 {
+  float: center;
+  width: 85%;
+  padding: 0 15px;
+  margin: 15px auto;
+  background: #EEE8AA;
+  height: 45%;
+}
+
+    </style>
+</head>
+<body>
+<header>
+
+</header>
+
+<div class="main">
+    <div class="mainCenter">
+        <div class="container1">
+            <div class="container_1"></div>
+            <div class="container_2">
+                <div class="btn-group">
+                    <button class="button">История операций</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container3">
+            <div class="container_3"></div>
+            <div class="container_4">
+                <div class="btn-group">
+                    <button class="button">Переводы людям</button>
+                    <button class="button">Купить валюту</button>
+                    <button class="button">Продать валюту</button>
+                </div>
+            </div>
+        </div>
+        <div class="containerBuffer"></div>
+        <div class="container2">
+            <div class="container_5"></div>
+            <div class="container_6">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+
+</footer>
+
+
+<!--<p th:text="${userById.userName}"></p>-->
+<!--<p th:text="${user.toString()}"></p>-->
+<!--<p th:text="${T(Math).sqrt(5.0)}"></p>-->
+
+<!--<p th:each="lang : ${user.languageList}">-->
+<!--    <span th:text="${lang.title}"/>-->
+<!--    <span th:text="${lang.description}"/>-->
+<!--</p>-->
+
+</body>
+</html>
