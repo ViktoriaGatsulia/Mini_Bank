@@ -13,6 +13,17 @@
 
 * Apache Cassandra 3.11.7
 
+### Перед запуском
+
+После установки всего стека программ, необходимо создать новый KEYSPACE (В Cassandra KEYSPACE – это некое пространство имён, которые определяет расположение данных в нодах. Кластер, в этом случае содержит по одному KEYSPACE на кажду ноду)
+
+     $ cqlsh
+     > CREATE KEYSPACE nameKeyspace WITH replication = {'class': 'SimpleStrategy', 'replication_factor':2}; # создание пространства имён
+     > DESCRIBE KEYSPACES; # проверка
+
+После успешного создания KEYSPACE необходимо указать в файле /src/main/resources/application.properties название нового KEYSPACE в строке
+    spring.data.cassandra.keyspace-name=nameKeyspace
+
 ### При возникновении ошибок
 
   $ sudo nodetool status  
