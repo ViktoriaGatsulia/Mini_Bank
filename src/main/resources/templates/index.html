@@ -99,8 +99,7 @@ footer {
 
 .container_1 {
   float: center;
-  width: 85%;
-  padding: 0 15px;
+  width: 90%;
   margin: 15px auto;
   background: #EEE8AA;
   height: 80%;
@@ -108,16 +107,14 @@ footer {
 
 .container_2 {
   float: center;
-  width: 85%;
-  padding: 0 15px;
+  width: 90%;
   margin: 15px auto;
   height: 15%;
 }
 
 .container_3 {
   float: center;
-  width: 85%;
-  padding: 0 15px;
+  width: 90%;
   margin: 15px auto;
   background: #EEE8AA;
   height: 53%;
@@ -125,8 +122,7 @@ footer {
 
 .container_4 {
   float: center;
-  width: 85%;
-  padding: 0 15px;
+  width: 90%;
   margin: 15px auto;
   background: #FFFFFF;
   height: 37%;
@@ -134,8 +130,7 @@ footer {
 
 .container_5 {
   float: center;
-  width: 85%;
-  padding: 0 15px;
+  width: 90%;
   margin: 15px auto;
   background: #EEE8AA;
   height: 45%;
@@ -143,24 +138,89 @@ footer {
 
 .container_6 {
   float: center;
-  width: 85%;
-  padding: 0 15px;
+  width: 90%;
   margin: 15px auto;
   background: #EEE8AA;
   height: 45%;
+}
+
+.container_head1 {
+  float: left;
+  width: 27%;
+  padding: 0 15px;
+  margin: 20px 0px 0px 20px;
+  background: #EEE8AA;
+  height: 50%;
+}
+.container_head2 {
+  float: right;
+  width: 27%;
+  padding: 0 15px;
+  margin: 20px 20px 0px 20px;
+  background: #EEE8AA;
+  height: 50%;
+}
+.container_head_buffer {
+  float: right;
+  width: 3.1%;
+  height: 50%;
+}
+.container_head3 {
+  float: right;
+  width: 27%;
+  padding: 0 15px;
+  margin: 0px 0px 0px 20px;
+  height: 50%;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.container10 {
+  width: 100%;
+  padding: 0 0px;
+  margin: 20px 0px 20px 0px;
+  background: #BDB76B;
+  height: 60%;
+}
+
+.container11 {
+  color: 006400;
+  text-align: left;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  padding: 0.04px 0px 0px 0px;
+  margin: 5px 0px 0px 0px;
+  background: #BDB76B;
+  height: 10%;
 }
 
     </style>
 </head>
 <body>
 <header>
-
+    <div class="container_head1"></div>
+    <div class="container_head2"></div>
+    <div class="container_head_buffer"></div>
+    <div class="container_head3">
+        <h1>MiniBank<h1>
+    </div>
 </header>
 
 <div class="main">
     <div class="mainCenter">
         <div class="container1">
-            <div class="container_1"></div>
+            <div class="container_1">
+                <div class="container10"></div>
+                <div class="container11">
+                    <p th:text="${userById.userName}"></p>
+                </div>
+                <div class="container11"></div>
+                <div class="container11"></div>
+            </div>
             <div class="container_2">
                 <div class="btn-group">
                     <button class="button">История операций</button>
