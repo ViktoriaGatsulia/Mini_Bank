@@ -3,6 +3,7 @@ package ru.miniBank.demo.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.cql.Ordering;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
@@ -15,11 +16,12 @@ import java.util.List;
  * @autor ViktoriaGatsulia
  * @version 1.0
  */
-@UserDefinedType("bankUser")
+//@UserDefinedType("bankUser")
 @Table("bankUser")
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString
 public class BankUser {
 
     /** Поле идентификатора пользователя */
@@ -45,5 +47,5 @@ public class BankUser {
 //    private BankAccount bankAccount;
 }
 /*
-    $ curl -H 'Content-Type:application/json' -d '{"user_id" : 1, "userName" : "Viktoria", "bankCard" : null}' '127.0.0.1:8080/saveBankUser'
+curl -H 'Content-Type:application/json' -d '{"user_id" : 1, "userName" : "Viktoria", "bankCard" : null}' '127.0.0.1:8080/saveBankUser'
  */
