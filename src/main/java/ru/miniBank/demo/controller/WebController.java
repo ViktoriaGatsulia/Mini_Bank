@@ -1,5 +1,6 @@
 package ru.miniBank.demo.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/home")
 public class WebController {
+    /** Поле для логирования */
+    private static final Logger log = Logger.getLogger(WebController.class.getName());
 
     /** Поле сервиса для сущности BankUser */
     private BankUserService bankUserService;
@@ -31,10 +34,12 @@ public class WebController {
     public WebController(BankUserService bankUserService, BankCardService bankCardService) {
         this.bankCardService = bankCardService;
         this.bankUserService = bankUserService;
+        log.info("Create WebController");
     }
 
     @GetMapping("/getUserById/id={id}")
     public String getUserById(Model model, @PathVariable Long id) {
+        log.info("call /getUserById/id=" + id);
 
         Optional<BankUser> userById= bankUserService.findById(id);
 

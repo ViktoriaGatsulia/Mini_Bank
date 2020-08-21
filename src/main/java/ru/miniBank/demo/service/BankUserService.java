@@ -1,5 +1,6 @@
 package ru.miniBank.demo.service;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.miniBank.demo.entity.BankUser;
@@ -15,7 +16,8 @@ import java.util.Optional;
  */
 @Service
 public class BankUserService {
-
+    /** Поле для логирования */
+    private static final Logger log = Logger.getLogger(BankUserService.class.getName());
 
     /** Поле для bankUser репозитория */
     private BankUserRepository bankUserRepository;
@@ -27,6 +29,7 @@ public class BankUserService {
     @Autowired
     public BankUserService(BankUserRepository bankUserRepository) {
         this.bankUserRepository = bankUserRepository;
+        log.info("BankUserService create");
     }
 
     /**
@@ -35,6 +38,7 @@ public class BankUserService {
      * @return bankUser - сохранённый пользователь
      */
     public BankUser save(BankUser bankUser) {
+        log.info("try BankUser save " + bankUser.toString());
         return bankUserRepository.save(bankUser);
     }
 
@@ -44,6 +48,7 @@ public class BankUserService {
      * @return bankUser - найденный пользователь (optional)
      */
     public Optional<BankUser> findById(Long id) {
+        log.info("try BankUser findById id = " + id);
         return bankUserRepository.findById(id);
     }
 
@@ -52,6 +57,7 @@ public class BankUserService {
      * @return спиок пользователей
      */
     public List<BankUser> findAll() {
+        log.info("try BankUser findAll");
         return bankUserRepository.findAll();
     }
 }

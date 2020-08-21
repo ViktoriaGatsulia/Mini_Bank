@@ -1,5 +1,6 @@
 package ru.miniBank.demo.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/")
 public class MainController {
+    /** Поле для логирования */
+    private static final Logger log = Logger.getLogger(MainController.class.getName());
+
 
     /** Поле сервиса для сущности BankUser */
     private BankUserService bankUserService;
@@ -35,6 +39,7 @@ public class MainController {
     public MainController(BankUserService bankUserService, BankCardService bankCardService) {
         this.bankCardService = bankCardService;
         this.bankUserService = bankUserService;
+        log.info("MainController create");
     }
 
     /**
@@ -43,6 +48,7 @@ public class MainController {
      */
     @GetMapping
     public ResponseEntity startPage() {
+        log.info("call start page");
         return ResponseEntity.ok("hello");
     }
 
@@ -53,6 +59,7 @@ public class MainController {
      */
     @PostMapping("/saveBankUser")
     public ResponseEntity saveBankUser(@RequestBody BankUser bankUser) {
+        log.info("call /saveBankUser " + bankUser.toString());
         bankUserService.save(bankUser);
         return ResponseEntity.ok(bankUser);
     }
@@ -64,6 +71,7 @@ public class MainController {
      */
     @GetMapping("/user_id={user_id}")
     public ResponseEntity findBankUserById(@PathVariable Long user_id) {
+        log.info("call /user_id=" + user_id);
         Optional<BankUser> byId = bankUserService.findById(user_id);
         return !byId.isPresent()
                 ? ResponseEntity.notFound().build()
@@ -77,6 +85,7 @@ public class MainController {
      */
     @PostMapping("/saveBankCard")
     public ResponseEntity saveBankCard(@RequestBody BankCard bankCard) {
+        log.info("call /saveBankCard " + bankCard.toString());
         bankCardService.save(bankCard);
         return ResponseEntity.ok(bankCard);
     }
@@ -88,6 +97,7 @@ public class MainController {
      */
     @GetMapping("/card_id={card_id}")
     public ResponseEntity findBankCardById(@PathVariable Long card_id) {
+        log.info("call /card_id=" + card_id);
         Optional<BankCard> byId = bankCardService.findById(card_id);
         return !byId.isPresent()
                 ? ResponseEntity.notFound().build()

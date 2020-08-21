@@ -1,6 +1,7 @@
 package ru.miniBank.demo.service;
 
 //import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.miniBank.demo.entity.BankCard;
@@ -16,6 +17,8 @@ import java.util.Optional;
  */
 @Service
 public class BankCardService {
+    /** Поле для логирования */
+    private static final Logger log = Logger.getLogger(BankCardService.class.getName());
 
     /** Поле для BankCard репозитория */
     private BankCardRepository bankCardRepository;
@@ -27,6 +30,7 @@ public class BankCardService {
     @Autowired
     public BankCardService(BankCardRepository bankCardRepository) {
         this.bankCardRepository = bankCardRepository;
+        log.info("BankCardService create");
     }
 
     /**
@@ -35,6 +39,7 @@ public class BankCardService {
      * @return bankCard - сохранённоая банковская карта
      */
     public BankCard save(BankCard bankCard) {
+        log.info("try BankCard save " + bankCard);
         return bankCardRepository.save(bankCard);
     }
 
@@ -44,6 +49,7 @@ public class BankCardService {
      * @return bankCard - найденная карта (optional)
      */
     public Optional<BankCard> findById(Long id) {
+        log.info("try BankCard findById id = " + id);
         return bankCardRepository.findById(id);
     }
 
@@ -52,6 +58,7 @@ public class BankCardService {
      * @return - список банковских карт
      */
     public List<BankCard> findAll() {
+        log.info("try BankCard findAll");
         return bankCardRepository.findAll();
     }
 }
