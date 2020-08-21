@@ -29,7 +29,7 @@ public class BankCard {
             type = PrimaryKeyType.PARTITIONED,
             ordering = Ordering.DESCENDING
     )
-    private Long card_id;
+    private long card_id;
 
     /** Дата до которой действует банковская карта */
     @Column
@@ -37,7 +37,7 @@ public class BankCard {
 
     /** Защитный код */
     @Column
-    private Integer cvc2;
+    private int cvc2;
 
     /** Номер банковской карты */
     @Column
@@ -45,7 +45,7 @@ public class BankCard {
 
     /** Баланс банковской карты */
     @Column
-    private Double balance;
+    private double balance;
 
     /** Категория банковской карты */
     @CassandraType(type = CassandraType.Name.VARCHAR)
