@@ -48,6 +48,8 @@ public class WebController {
 
         userById.ifPresent(bankUser -> model.addAttribute("userById", bankUser));
 
-        return "index";
+        return (userById.isPresent())
+            ? "index"
+            : "not_found";
     }
 }

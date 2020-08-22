@@ -11,6 +11,7 @@ import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.*;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -65,7 +66,7 @@ public class BankUser {
     @Getter
     @Setter
     @CassandraType(type = CassandraType.Name.LIST, typeArguments = {CassandraType.Name.UDT}, userTypeName = "bankCard")
-    private List<BankCard> bankCard = null;
+    private List<BankCard> bankCard = new ArrayList<>();
 
     /** Счёт пользователя - сумма сбережений со всех карт */
     @Transient
@@ -86,6 +87,7 @@ public class BankUser {
             buff += card.getBalance();
         return buff;
     }
+
     public void setBankAccount() {
         if (Objects.isNull(bankCard)) bankAccount = 0D;
         double buff = 0D;
@@ -93,7 +95,11 @@ public class BankUser {
             buff += card.getBalance();
         bankAccount = buff;
     }
+
+    public void addCard(BankCard card) {
+        bankCard.add(card);
+    }
 }
 /*
-curl -H 'Content-Type:application/json' -d '{"user_id" : 1, "userName" : "Viktoria", "bankCard" : null}' '127.0.0.1:8080/saveBankUser'
+curl -H 'Content-Type:application/json' -d '{"user_id" : 1, "userName" : "Гацуля Виктория Вячеславовна", "bankCard" : null, "email" : "viki@gmail.com", "birthday" : "2001-08-14"}' '127.0.0.1:8080/saveBankUser'
  */

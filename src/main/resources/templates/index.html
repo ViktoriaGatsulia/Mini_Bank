@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang=ru xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
@@ -367,7 +367,10 @@ p {
                     </div>
                 </div>
             </div>
-            <div class="container_6"></div>
+            <div class="container_6">
+                <p th:each="card : ${userById.bankCard}">
+                    <span th:text="${card.balance}"/>
+            </div>
             <div class="btn-group">
                 <button class="button">Добавить карту</button>
             </div>
