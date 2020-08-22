@@ -10,6 +10,7 @@ import org.springframework.data.cassandra.core.cql.Ordering;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +24,8 @@ import java.util.Objects;
 @Table("bankUser")
 @ToString
 public class BankUser {
+
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     /** Поле идентификатора пользователя */
     @Getter
@@ -53,6 +56,10 @@ public class BankUser {
     @Setter
     @Column
     private Date birthday;
+
+    public String birthdayDataFormat() {
+        return dateFormat.format(birthday);
+    }
 
     /** Список банковских карт пользователя */
     @Getter

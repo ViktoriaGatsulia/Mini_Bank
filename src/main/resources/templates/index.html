@@ -101,7 +101,6 @@ footer {
   float: center;
   width: 90%;
   margin: 15px auto;
-  background: #EEE8AA;
   height: 80%;
 }
 
@@ -117,7 +116,7 @@ footer {
   width: 90%;
   margin: 15px auto;
   background: #EEE8AA;
-  height: 53%;
+  height: 55%;
 }
 
 .container_4 {
@@ -132,8 +131,7 @@ footer {
   float: center;
   width: 90%;
   margin: 15px auto;
-  background: #EEE8AA;
-  height: 45%;
+  height: 39%;
 }
 
 .container_6 {
@@ -141,7 +139,7 @@ footer {
   width: 90%;
   margin: 15px auto;
   background: #EEE8AA;
-  height: 45%;
+  height: 39%;
 }
 
 .container_head1 {
@@ -181,21 +179,98 @@ footer {
   width: 100%;
   padding: 0 0px;
   margin: 20px 0px 20px 0px;
-  background: #BDB76B;
-  height: 60%;
+  background: #EEE8AA;
+  height: 35%;
 }
 
 .container11 {
-  color: 006400;
-  text-align: left;
+  color: #000000;
+  text-align: justify;
   text-decoration: none;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
   padding: 0.04px 0px 0px 0px;
-  margin: 5px 0px 0px 0px;
-  background: #BDB76B;
+  margin: 0px 0px 0px 0px;
   height: 10%;
+}
+
+.container11_2 {
+  color: #008000;
+  text-align: center;
+  text-align-vertical: justify;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  height: 10%;
+  border: 1.5px solid green;
+  border-radius: 5px;
+}
+
+p {
+  padding: 0px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
+}
+
+.container12 {
+  color: #008000;
+  text-align: center;
+  text-align-vertical: justify;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  padding: 0.04px 0px 0px 0px;
+  margin: 5px 0px 0px 0px;
+  border: 1.5px solid green;
+  border-radius: 5px;
+  height: 20%;
+}
+
+.container14 {
+  width: 100%;
+  padding: 0.04px 0px 0px 0px;
+  margin: 5px 0px 0px 0px;
+  height: 24%;
+}
+
+.container13 {
+  float: left
+  color: #008000;
+  text-align: center;
+  text-decoration: none;
+  font-size: 26px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 18%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  height: 95%;
+  position: relative;
+  z-index:1;
+  border: 1.5px solid green;
+  border-radius: 5px;
+}
+
+.container15 {
+  float: right
+  color: #008000;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 70%;
+  padding: 0.04px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  height: 100%;
+  position: relative;
+  z-index:1;
+}
+
+.container15, .container13 {
+  display: inline-block;
 }
 
     </style>
@@ -215,11 +290,34 @@ footer {
         <div class="container1">
             <div class="container_1">
                 <div class="container10"></div>
-                <div class="container11">
-                    <p th:text="${userById.userName}"></p>
+                <div class="container11_2">
+                    <p>ФИО:</p>
                 </div>
-                <div class="container11"></div>
-                <div class="container11"></div>
+
+                <div class="container11">
+                    <div class="container16"></div>
+                    <div class="container17">
+                        <p th:text="${userById.userName}"></p>
+                    </div>
+                </div>
+                <div class="container11_2">
+                    <p>Дата рождения:</p>
+                </div>
+                <div class="container11">
+                    <div class="container16"></div>
+                    <div class="container17">
+                        <p th:text="${userById.birthdayDataFormat()}"></p>
+                    </div>
+                </div>
+                <div class="container11_2">
+                    <p>email:</p>
+                </div>
+                <div class="container11">
+                    <div class="container16"></div>
+                    <div class="container17">
+                        <p th:text="${userById.email}"></p>
+                    </div>
+                </div>
             </div>
             <div class="container_2">
                 <div class="btn-group">
@@ -232,17 +330,46 @@ footer {
             <div class="container_3"></div>
             <div class="container_4">
                 <div class="btn-group">
-                    <button class="button">Переводы людям</button>
-                    <button class="button">Купить валюту</button>
-                    <button class="button">Продать валюту</button>
+                    <button class="button">Перевести</button>
+                    <button class="button">Пополнить</button>
+                    <button class="button">Валюта</button>
                 </div>
             </div>
         </div>
         <div class="containerBuffer"></div>
         <div class="container2">
-            <div class="container_5"></div>
-            <div class="container_6">
-
+            <div class="container_5">
+                <div class="container12">
+                    <p>Общий счёт:</p>
+                </div>
+                <div class="container14">
+                    <div class="container13">
+                        <p>&#8381;</p>
+                    </div>
+                    <div class="container15">
+                        <p th:text="${userById.bankAccount}"></p>
+                    </div>
+                </div>
+                <div class="container14">
+                    <div class="container13">
+                        <p>&#36;</p>
+                    </div>
+                    <div class="container15">
+                        <p>Hello</p>
+                    </div>
+                </div>
+                <div class="container14">
+                    <div class="container13">
+                        <p>&#128;</p>
+                    </div>
+                    <div class="container15">
+                        <p>Hello</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container_6"></div>
+            <div class="btn-group">
+                <button class="button">Добавить карту</button>
             </div>
         </div>
 
