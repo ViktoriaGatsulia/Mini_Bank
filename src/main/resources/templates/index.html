@@ -3,74 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style>
-body {
-  margin: 0;
-}
-header {
-  background: #008000;
-  height: 100px;
-}
-.main {
-  background: #008000;
-  height: 500px;
-}
 
-.mainCenter {
-  width: 100%;
-  max-width: 1024px;
-  padding: 0 15px;
-  margin: 0 auto;
-  background: #008000;
-  height: 100%;
-}
-
-footer {
+header, footer {
+  align: center;
+  vertical-align: middle;
   background: #008000;
   height: 70px;
 }
 
 .container1 {
-  float: left;
-  width: 26.5%;
-  max-width: 1024px;
-  padding: 0 15px;
-  margin: 0 auto;
-  background: #FFFFFF;
-  height: 100%;
-  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
-}
-
-.containerBuffer {
   float: right;
-  width: 3%;
+  width: 80%;
   max-width: 1024px;
   padding: 0 15px;
-  margin: 0 auto;
-  height: 100%;
+  margin: 10% 0% 0% 0%;
+  background: #FFFFFF;
+  height: 500px;
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
 }
 
 .container2 {
-  float: right;
-  width: 26.5%;
+  float: center;
+  width: 90%;
   max-width: 1024px;
   padding: 0 15px;
-  margin: 0 auto;
+  margin: 10px;
   background: #FFFFFF;
-  height: 100%;
+  height: 90%;
   box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
-  position: relative;
-  z-index:1;
 }
-
 .container3 {
-  float: right;
-  width: 26.5%;
+  float: left;
+  width: 90%;
   max-width: 1024px;
   padding: 0 15px;
-  margin: 0 auto;
+  margin: 10px;
   background: #FFFFFF;
-  height: 100%;
+  height: 90%;
   box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
 }
 
@@ -276,17 +251,22 @@ p {
     </style>
 </head>
 <body>
-<header>
-    <div class="container_head1"></div>
-    <div class="container_head2"></div>
-    <div class="container_head_buffer"></div>
-    <div class="container_head3">
-        <h1>MiniBank<h1>
-    </div>
-</header>
 
-<div class="main">
-    <div class="mainCenter">
+<div class="row">
+    <div class="col-md-12" style="background-color: green; height: 100%;">
+        <header>
+            <h1 align="center" style="color: white;">MiniBank</h1>
+        </header>
+    </div>
+</div>
+
+
+
+<div class="row">
+
+
+
+    <div class="col-md-4" style="background-color: red;">
         <div class="container1">
             <div class="container_1">
                 <div class="container10"></div>
@@ -325,17 +305,11 @@ p {
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="container3">
-            <div class="container_3"></div>
-            <div class="container_4">
-                <div class="btn-group">
-                    <button class="button">Перевести</button>
-                    <button class="button">Пополнить</button>
-                    <button class="button">Валюта</button>
-                </div>
-            </div>
-        </div>
+
+
+    <div class="col-md-4" style="background-color: yellow;">
         <div class="containerBuffer"></div>
         <div class="container2">
             <div class="container_5">
@@ -375,14 +349,38 @@ p {
                 <button class="button">Добавить карту</button>
             </div>
         </div>
+    </div>
 
+
+
+
+
+    <div class="col-md-4" style="background-color: blue;">
+        <div class="container3">
+            <div class="container_3"></div>
+            <div class="container_4">
+                <div class="btn-group">
+                    <button class="button">Перевести</button>
+                    <button class="button">Пополнить</button>
+                    <button class="button">Валюта</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<footer>
 
-</footer>
 
+
+
+
+<div class="row">
+    <div class="col-md-12" style="background-color: green;">
+        <footer>
+
+        </footer>
+    </div>
+</div>
 
 <!--<p th:text="${userById.userName}"></p>-->
 <!--<p th:text="${user.toString()}"></p>-->
