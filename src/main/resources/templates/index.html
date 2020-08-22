@@ -14,42 +14,40 @@ header, footer {
   align: center;
   vertical-align: middle;
   background: #008000;
-  height: 70px;
+  height: 90px;
 }
 
 .container1 {
   float: right;
-  width: 80%;
-  max-width: 1024px;
+  width: 75%;
   padding: 0 15px;
-  margin: 10% 0% 0% 0%;
+  margin: 5% 0% 0% 0%;
+  background: #FFFFFF;
+  height: 500px;
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
+  position: relative;
+  z-index:1;
+}
+.container2 {
+  float: left;
+  width: 75%;
+  padding: 0 15px;
+  margin: 5% 0% 0% 13%;
+  background: #FFFFFF;
+  height: 500px;
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
+}
+.container3 {
+  float: left;
+  width: 75%;
+  padding: 0 15px;
+  margin: 5% 0% 0% 0%;
   background: #FFFFFF;
   height: 500px;
   box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
 }
 
-.container2 {
-  float: center;
-  width: 90%;
-  max-width: 1024px;
-  padding: 0 15px;
-  margin: 10px;
-  background: #FFFFFF;
-  height: 90%;
-  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
-}
-.container3 {
-  float: left;
-  width: 90%;
-  max-width: 1024px;
-  padding: 0 15px;
-  margin: 10px;
-  background: #FFFFFF;
-  height: 90%;
-  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
-}
-
-.btn-group .button {
+.button-group .button {
   width: 100%;
   background-color: #008000; /* Green */
   border: 1px solid green;
@@ -60,46 +58,45 @@ header, footer {
   cursor: pointer;
   display: block;
   padding: 15px 32px;
-  margin: 15px 0px;
+  margin: 0px 0px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.50);
 }
 
-.btn-group .button:not(:last-child) {
+.button-group .button:not(:last-child) {
   border-bottom: none; /* Prevent double borders */
 }
 
-.btn-group .button:hover {
+.button-group .button:hover {
   background-color: #228B22;
 }
 
 .container_1 {
   float: center;
   width: 90%;
-  margin: 15px auto;
-  height: 80%;
+  margin: 0px auto;
+  height: 90%;
 }
 
 .container_2 {
   float: center;
-  width: 90%;
-  margin: 15px auto;
+  width: 100%;
+  margin: 0px auto;
   height: 15%;
 }
 
 .container_3 {
   float: center;
   width: 90%;
-  margin: 15px auto;
+  margin: 20px auto;
   background: #EEE8AA;
-  height: 55%;
+  height: 49.6%;
 }
 
 .container_4 {
   float: center;
   width: 90%;
   margin: 15px auto;
-  background: #FFFFFF;
-  height: 37%;
+  height: 60%;
 }
 
 .container_5 {
@@ -111,43 +108,29 @@ header, footer {
 
 .container_6 {
   float: center;
-  width: 90%;
+  width: 100%;
   margin: 15px auto;
   background: #EEE8AA;
-  height: 39%;
+  height: 41%;
+}
+
+.container_7 {
+  float: center;
+  width: 100%;
+  margin: 10px auto;
+  height: 15%;
 }
 
 .container_head1 {
-  float: left;
-  width: 27%;
-  padding: 0 15px;
-  margin: 20px 0px 0px 20px;
-  background: #EEE8AA;
-  height: 50%;
-}
-.container_head2 {
   float: right;
-  width: 27%;
-  padding: 0 15px;
-  margin: 20px 20px 0px 20px;
-  background: #EEE8AA;
-  height: 50%;
-}
-.container_head_buffer {
-  float: right;
-  width: 3.1%;
-  height: 50%;
-}
-.container_head3 {
-  float: right;
-  width: 27%;
-  padding: 0 15px;
+  width: 100%;
+  padding: 10px;
   margin: 0px 0px 0px 20px;
-  height: 50%;
+  height: 100%;
   color: white;
   text-align: center;
   text-decoration: none;
-  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .container10 {
@@ -155,19 +138,19 @@ header, footer {
   padding: 0 0px;
   margin: 20px 0px 20px 0px;
   background: #EEE8AA;
-  height: 35%;
+  height: 30%;
 }
 
 .container11 {
   color: #000000;
-  text-align: justify;
+  text-align: left;
   text-decoration: none;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
   padding: 0.04px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  height: 10%;
+  height: 11%;
 }
 
 .container11_2 {
@@ -178,9 +161,9 @@ header, footer {
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
-  padding: 0px 0px 0px 0px;
+  padding: 2px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  height: 10%;
+  height: 7%;
   border: 1.5px solid green;
   border-radius: 5px;
 }
@@ -198,18 +181,18 @@ p {
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
-  padding: 0.04px 0px 0px 0px;
-  margin: 5px 0px 0px 0px;
+  padding: 2px 0px 0px 0px;
+  margin: 20px 0px 10px 0px;
+  height: 7%;
   border: 1.5px solid green;
   border-radius: 5px;
-  height: 20%;
 }
 
 .container14 {
   width: 100%;
   padding: 0.04px 0px 0px 0px;
   margin: 5px 0px 0px 0px;
-  height: 24%;
+  height: 10%;
 }
 
 .container13 {
@@ -220,13 +203,11 @@ p {
   font-size: 26px;
   font-family: Arial, Helvetica, sans-serif;
   width: 18%;
-  padding: 0px 0px 0px 0px;
+  padding: 6px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   height: 95%;
   position: relative;
   z-index:1;
-  border: 1.5px solid green;
-  border-radius: 5px;
 }
 
 .container15 {
@@ -250,28 +231,31 @@ p {
 
     </style>
 </head>
-<body>
+<body  style="background-color: green;">
 
-<div class="row">
-    <div class="col-md-12" style="background-color: green; height: 100%;">
-        <header>
+
+<div class="row" style="height: 70px; background-color: green; padding: 10px;">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="container_head1">
             <h1 align="center" style="color: white;">MiniBank</h1>
-        </header>
+        </div>
     </div>
+    <div class="col-md-4"></div>
 </div>
 
 
 
-<div class="row">
+<div class="row" style="height: 600px; background-color: green; padding: 20px;">
 
 
 
-    <div class="col-md-4" style="background-color: red;">
+    <div class="col-md-4" style="background-color: green;">
         <div class="container1">
             <div class="container_1">
                 <div class="container10"></div>
                 <div class="container11_2">
-                    <p>ФИО:</p>
+                    <h5>ФИО:</h5>
                 </div>
 
                 <div class="container11">
@@ -281,7 +265,7 @@ p {
                     </div>
                 </div>
                 <div class="container11_2">
-                    <p>Дата рождения:</p>
+                    <h5>Дата рождения:</h5>
                 </div>
                 <div class="container11">
                     <div class="container16"></div>
@@ -290,7 +274,7 @@ p {
                     </div>
                 </div>
                 <div class="container11_2">
-                    <p>email:</p>
+                    <h5>email:</h5>
                 </div>
                 <div class="container11">
                     <div class="container16"></div>
@@ -298,27 +282,27 @@ p {
                         <p th:text="${userById.email}"></p>
                     </div>
                 </div>
-            </div>
-            <div class="container_2">
-                <div class="btn-group">
-                    <button class="button">История операций</button>
+                <div class="container_2">
+                    <div class="button-group" style="align: center;  width: 100%;">
+                        <button class="button">История операций</button>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 
 
 
-    <div class="col-md-4" style="background-color: yellow;">
-        <div class="containerBuffer"></div>
+    <div class="col-md-4" style="background-color: green;">
         <div class="container2">
-            <div class="container_5">
+            <div class="container_1">
                 <div class="container12">
-                    <p>Общий счёт:</p>
+                    <h5>Общий счёт:</h5>
                 </div>
                 <div class="container14">
                     <div class="container13">
-                        <p>&#8381;</p>
+                        <h4 style="color: #008000;">&#8381;</h4>
                     </div>
                     <div class="container15">
                         <p th:text="${userById.bankAccount}"></p>
@@ -326,7 +310,7 @@ p {
                 </div>
                 <div class="container14">
                     <div class="container13">
-                        <p>&#36;</p>
+                        <h4 style="color: #008000;">&#36;</h4>
                     </div>
                     <div class="container15">
                         <p>Hello</p>
@@ -334,20 +318,22 @@ p {
                 </div>
                 <div class="container14">
                     <div class="container13">
-                        <p>&#128;</p>
+                        <h4 style="color: #008000;">&#128;</h4>
                     </div>
                     <div class="container15">
                         <p>Hello</p>
                     </div>
                 </div>
-            </div>
-            <div class="container_6">
-                <p th:each="card : ${userById.bankCard}">
-                    <span th:text="${card.balance}"/>
-            </div>
-            <div class="btn-group">
-                <button class="button">Добавить карту</button>
-            </div>
+                <div class="container_6">
+                    <p th:each="card : ${userById.bankCard}">
+                        <span th:text="${card.balance}"/>
+                </div>
+                <div class="container_2">
+                    <div class="button-group" style="align: center; width: 100%;">
+                        <button class="button">Добавить карту</button>
+                    </div>
+                </div>
+        </div>
         </div>
     </div>
 
@@ -355,32 +341,27 @@ p {
 
 
 
-    <div class="col-md-4" style="background-color: blue;">
+    <div class="col-md-4" style="background-color: green;">
         <div class="container3">
             <div class="container_3"></div>
             <div class="container_4">
-                <div class="btn-group">
-                    <button class="button">Перевести</button>
-                    <button class="button">Пополнить</button>
-                    <button class="button">Валюта</button>
+                <div class="button-group" style="align: center; width: 100%;">
+                    <div class="container_7">
+                        <button class="button" style="align: center; width: 100%;">Перевести</button>
+                    </div>
+                    <div class="container_7">
+                        <button class="button" style="align: center; width: 100%;">Пополнить</button>
+                    </div>
+                    <div class="container_7">
+                        <button class="button" style="align: center; width: 100%;">Валюта</button>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-
-
-
-
-<div class="row">
-    <div class="col-md-12" style="background-color: green;">
-        <footer>
-
-        </footer>
-    </div>
-</div>
 
 <!--<p th:text="${userById.userName}"></p>-->
 <!--<p th:text="${user.toString()}"></p>-->
