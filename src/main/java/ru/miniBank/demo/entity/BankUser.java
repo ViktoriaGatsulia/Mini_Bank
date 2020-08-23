@@ -66,7 +66,7 @@ public class BankUser {
     @Getter
     @Setter
     @CassandraType(type = CassandraType.Name.LIST, typeArguments = {CassandraType.Name.UDT}, userTypeName = "bankCard")
-    private List<BankCard> bankCard = new ArrayList<>();
+    private List<BankCard> bankCard;
 
     /** Счёт пользователя - сумма сбережений со всех карт */
     @Transient
@@ -97,6 +97,7 @@ public class BankUser {
     }
 
     public void addCard(BankCard card) {
+        if (Objects.isNull(bankCard)) bankCard = new ArrayList<>();
         bankCard.add(card);
     }
 }

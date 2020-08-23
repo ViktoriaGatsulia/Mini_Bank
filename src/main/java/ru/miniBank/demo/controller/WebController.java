@@ -52,4 +52,17 @@ public class WebController {
             ? "index"
             : "not_found";
     }
+
+    @GetMapping("/id={id}")
+    public String getUserById2(Model model, @PathVariable Long id) {
+        log.info("call /getUserById/id=" + id);
+
+        Optional<BankUser> userById= bankUserService.findById(id);
+
+        userById.ifPresent(bankUser -> model.addAttribute("userById", bankUser));
+
+        return (userById.isPresent())
+                ? "index2"
+                : "not_found";
+    }
 }

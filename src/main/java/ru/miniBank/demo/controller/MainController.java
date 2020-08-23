@@ -121,6 +121,7 @@ public class MainController {
         log.info("call /addCardForUser/user_id= " + id);
         Optional<BankUser> byId = bankUserService.findById(id);
         byId.ifPresent(bankUser -> bankUser.addCard(bankCard));
+        byId.ifPresent(bankUser -> bankUserService.save(bankUser));
         return !byId.isPresent()
                 ? ResponseEntity.notFound().build()
                 : ResponseEntity.ok(byId);
