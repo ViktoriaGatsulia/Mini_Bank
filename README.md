@@ -4,6 +4,8 @@
 
 # Mini Bank
 
+![alt text](screenshots/screen1.png "Каркас приложения")
+
 ## Используемые версии
 * Ubuntu 18.04.4 LTS
 
