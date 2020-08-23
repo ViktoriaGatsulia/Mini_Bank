@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+</head>
+
+<body ng-app="MAIN_PAGE" ng-controller="MAIN_PAGE_CONTROLLER">
+
+<h1>
+    <p th:text="${userById.user_id}"></p>
+<!--    {{getPropId(4)}}-->
+</h1>
+
+<script type="text/javascript">
+
+        var pid = 0;
+
+        var app = angular.module("MAIN_PAGE", []);
+        app.controller("MAIN_PAGE_CONTROLLER", function($scope, $http) {
+            console.log('hello');
+            console.log(pid)
+            $scope.getPropId = function (inputID) {
+                console.log('hello2');
+                alert(inputID);
+            }
+        });
+
+</script>
+
+</body>
+</html>
