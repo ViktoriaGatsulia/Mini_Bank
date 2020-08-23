@@ -104,4 +104,25 @@ public class MainController {
                 : ResponseEntity.ok(byId);
     }
 
+    @GetMapping("/findAllBankUser")
+    public ResponseEntity findAllBankUser() {
+        log.info("call /findAllBankUser");
+        return ResponseEntity.ok(bankUserService.findAll());
+    }
+
+    @GetMapping("/findAllBankCard")
+    public ResponseEntity findAllBankCard() {
+        log.info("call /findAllBankCard");
+        return ResponseEntity.ok(bankCardService.findAll());
+    }
+
+    @PostMapping("/addCardForUser/user_id={id}")
+    public ResponseEntity addCardForUser(@PathVariable Long id, @RequestBody BankCard bankCard) {
+        log.info("call /addCardForUser/user_id= " + id);
+        Optional<BankUser> byId = bankUserService.findById(id);
+        byId.ifPresent(bankUser -> bankUser.addCard(bankCard));
+        return !byId.isPresent()
+                ? ResponseEntity.notFound().build()
+                : ResponseEntity.ok(byId);
+    }
 }

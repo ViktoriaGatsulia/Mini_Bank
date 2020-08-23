@@ -1,80 +1,54 @@
 <!DOCTYPE html>
-<html lang=ru xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
     <style>
-body {
-  margin: 0;
-}
-header {
-  background: #008000;
-  height: 100px;
-}
-.main {
-  background: #008000;
-  height: 500px;
-}
 
-.mainCenter {
-  width: 100%;
-  max-width: 1024px;
-  padding: 0 15px;
-  margin: 0 auto;
+header, footer {
+  align: center;
+  vertical-align: middle;
   background: #008000;
-  height: 100%;
-}
-
-footer {
-  background: #008000;
-  height: 70px;
+  height: 90px;
 }
 
 .container1 {
-  float: left;
-  width: 26.5%;
-  max-width: 1024px;
-  padding: 0 15px;
-  margin: 0 auto;
-  background: #FFFFFF;
-  height: 100%;
-  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
-}
-
-.containerBuffer {
   float: right;
-  width: 3%;
-  max-width: 1024px;
+  width: 75%;
   padding: 0 15px;
-  margin: 0 auto;
-  height: 100%;
-}
-
-.container2 {
-  float: right;
-  width: 26.5%;
-  max-width: 1024px;
-  padding: 0 15px;
-  margin: 0 auto;
+  margin: 5% 0% 0% 0%;
   background: #FFFFFF;
-  height: 100%;
+  height: 500px;
   box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
   position: relative;
   z-index:1;
 }
-
-.container3 {
-  float: right;
-  width: 26.5%;
-  max-width: 1024px;
+.container2 {
+  float: left;
+  width: 75%;
   padding: 0 15px;
-  margin: 0 auto;
+  margin: 5% 0% 0% 13%;
   background: #FFFFFF;
-  height: 100%;
+  height: 500px;
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
+}
+.container3 {
+  float: left;
+  width: 75%;
+  padding: 0 15px;
+  margin: 5% 0% 0% 0%;
+  background: #FFFFFF;
+  height: 500px;
   box-shadow: 0 16px 32px 0 rgba(0,0,0,0.50), 0 6px 20px 0 rgba(0,0,0,0.50);
 }
 
-.btn-group .button {
+.button-group .button {
   width: 100%;
   background-color: #008000; /* Green */
   border: 1px solid green;
@@ -85,46 +59,48 @@ footer {
   cursor: pointer;
   display: block;
   padding: 15px 32px;
-  margin: 15px 0px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.50);
 }
 
-.btn-group .button:not(:last-child) {
+.button {
+  margin: 0px 0px 10px 0px;
+}
+
+.button-group .button:not(:last-child) {
   border-bottom: none; /* Prevent double borders */
 }
 
-.btn-group .button:hover {
+.button-group .button:hover {
   background-color: #228B22;
 }
 
 .container_1 {
   float: center;
   width: 90%;
-  margin: 15px auto;
-  height: 80%;
+  margin: 0px auto;
+  height: 90%;
 }
 
 .container_2 {
   float: center;
-  width: 90%;
-  margin: 15px auto;
+  width: 100%;
+  margin: 0px auto;
   height: 15%;
 }
 
 .container_3 {
   float: center;
   width: 90%;
-  margin: 15px auto;
+  margin: 20px auto;
   background: #EEE8AA;
-  height: 55%;
+  height: 49.6%;
 }
 
 .container_4 {
   float: center;
   width: 90%;
   margin: 15px auto;
-  background: #FFFFFF;
-  height: 37%;
+  height: 60%;
 }
 
 .container_5 {
@@ -136,43 +112,29 @@ footer {
 
 .container_6 {
   float: center;
-  width: 90%;
+  width: 100%;
   margin: 15px auto;
   background: #EEE8AA;
-  height: 39%;
+  height: 41%;
+}
+
+.container_7 {
+  float: center;
+  width: 100%;
+  margin: 10px auto;
+  height: 15%;
 }
 
 .container_head1 {
-  float: left;
-  width: 27%;
-  padding: 0 15px;
-  margin: 20px 0px 0px 20px;
-  background: #EEE8AA;
-  height: 50%;
-}
-.container_head2 {
   float: right;
-  width: 27%;
-  padding: 0 15px;
-  margin: 20px 20px 0px 20px;
-  background: #EEE8AA;
-  height: 50%;
-}
-.container_head_buffer {
-  float: right;
-  width: 3.1%;
-  height: 50%;
-}
-.container_head3 {
-  float: right;
-  width: 27%;
-  padding: 0 15px;
+  width: 100%;
+  padding: 10px;
   margin: 0px 0px 0px 20px;
-  height: 50%;
+  height: 100%;
   color: white;
   text-align: center;
   text-decoration: none;
-  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .container10 {
@@ -180,19 +142,19 @@ footer {
   padding: 0 0px;
   margin: 20px 0px 20px 0px;
   background: #EEE8AA;
-  height: 35%;
+  height: 30%;
 }
 
 .container11 {
   color: #000000;
-  text-align: justify;
+  text-align: left;
   text-decoration: none;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
   padding: 0.04px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  height: 10%;
+  height: 11%;
 }
 
 .container11_2 {
@@ -203,9 +165,9 @@ footer {
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
-  padding: 0px 0px 0px 0px;
+  padding: 2px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  height: 10%;
+  height: 7%;
   border: 1.5px solid green;
   border-radius: 5px;
 }
@@ -223,18 +185,18 @@ p {
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
-  padding: 0.04px 0px 0px 0px;
-  margin: 5px 0px 0px 0px;
+  padding: 2px 0px 0px 0px;
+  margin: 20px 0px 10px 0px;
+  height: 7%;
   border: 1.5px solid green;
   border-radius: 5px;
-  height: 20%;
 }
 
 .container14 {
   width: 100%;
   padding: 0.04px 0px 0px 0px;
   margin: 5px 0px 0px 0px;
-  height: 24%;
+  height: 10%;
 }
 
 .container13 {
@@ -245,13 +207,11 @@ p {
   font-size: 26px;
   font-family: Arial, Helvetica, sans-serif;
   width: 18%;
-  padding: 0px 0px 0px 0px;
+  padding: 6px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   height: 95%;
   position: relative;
   z-index:1;
-  border: 1.5px solid green;
-  border-radius: 5px;
 }
 
 .container15 {
@@ -273,115 +233,187 @@ p {
   display: inline-block;
 }
 
+.hidden {
+  display: none;
+}
+
+.newContainer1 {
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  font-size: 32px;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 20%;
+  background-color: green;
+  padding: 35px;
+}
+
+.windowNew {
+  height: 90%;
+  width: 100%;
+  margin: 3px 0% 0% 0%;
+  background-color: white;
+  box-shadow: 0px 0px 0px 10000px rgba(0,0,0,0.50);
+  position: relative;
+  z-index:1;"
+}
     </style>
 </head>
-<body>
-<header>
-    <div class="container_head1"></div>
-    <div class="container_head2"></div>
-    <div class="container_head_buffer"></div>
-    <div class="container_head3">
-        <h1>MiniBank<h1>
+
+
+
+
+<body style="background-color: green;" ng-app="MAIN_PAGE" ng-controller="MAIN_PAGE_CONTROLLER">
+
+
+    <div class="row" style="height: 150px; background-color: green; padding: 75px;">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="container_head1">
+                <p align="center" style="color: white; font-size: 70px; margin: 0 0 0 0; padding: 0 0 0 0;">MiniBank</p>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
     </div>
-</header>
 
-<div class="main">
-    <div class="mainCenter">
-        <div class="container1">
-            <div class="container_1">
-                <div class="container10"></div>
-                <div class="container11_2">
-                    <p>ФИО:</p>
+
+
+    <div class="row" style="height: 600px; background-color: green; padding: 20px;">
+
+
+
+        <div class="col-md-4" style="background-color: green;">
+            <div class="container1">
+                <div class="container_1">
+                    <div class="container10"></div>
+                    <div class="container11_2">
+                        <h5>ФИО:</h5>
+                    </div>
+
+                    <div class="container11">
+                        <div class="container16"></div>
+                        <div class="container17">
+                            <p th:text="${userById.userName}"></p>
+                        </div>
+                    </div>
+                    <div class="container11_2">
+                        <h5>Дата рождения:</h5>
+                    </div>
+                    <div class="container11">
+                        <div class="container16"></div>
+                        <div class="container17">
+                            <p th:text="${userById.birthdayDataFormat()}"></p>
+                        </div>
+                    </div>
+                    <div class="container11_2">
+                        <h5>email:</h5>
+                    </div>
+                    <div class="container11">
+                        <div class="container16"></div>
+                        <div class="container17">
+                            <p th:text="${userById.email}"></p>
+                        </div>
+                    </div>
+                    <div class="container_2">
+                        <div class="button-group" style="align: center;  width: 100%;">
+                            <button class="button">История операций</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="container11">
-                    <div class="container16"></div>
-                    <div class="container17">
-                        <p th:text="${userById.userName}"></p>
-                    </div>
-                </div>
-                <div class="container11_2">
-                    <p>Дата рождения:</p>
-                </div>
-                <div class="container11">
-                    <div class="container16"></div>
-                    <div class="container17">
-                        <p th:text="${userById.birthdayDataFormat()}"></p>
-                    </div>
-                </div>
-                <div class="container11_2">
-                    <p>email:</p>
-                </div>
-                <div class="container11">
-                    <div class="container16"></div>
-                    <div class="container17">
-                        <p th:text="${userById.email}"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="container_2">
-                <div class="btn-group">
-                    <button class="button">История операций</button>
-                </div>
             </div>
         </div>
 
-        <div class="container3">
-            <div class="container_3"></div>
-            <div class="container_4">
-                <div class="btn-group">
-                    <button class="button">Перевести</button>
-                    <button class="button">Пополнить</button>
-                    <button class="button">Валюта</button>
-                </div>
+
+
+        <div class="col-md-4" style="background-color: green;">
+            <div class="container2">
+                <div class="container_1">
+                    <div class="container12">
+                        <h5>Общий счёт:</h5>
+                    </div>
+                    <div class="container14">
+                        <div class="container13">
+                            <h4 style="color: #008000;">&#8381;</h4>
+                        </div>
+                        <div class="container15">
+                            <p th:text="${userById.bankAccount}"></p>
+                        </div>
+                    </div>
+                    <div class="container14">
+                        <div class="container13">
+                            <h4 style="color: #008000;">&#36;</h4>
+                        </div>
+                        <div class="container15">
+                            <p>0.0</p>
+                        </div>
+                    </div>
+                    <div class="container14">
+                        <div class="container13">
+                            <h4 style="color: #008000;">&#128;</h4>
+                        </div>
+                        <div class="container15">
+                            <p>0.0</p>
+                        </div>
+                    </div>
+                    <div class="container_6">
+                        <p th:each="card : ${userById.bankCard}">
+                            <span th:text="${card.card_number}"/>
+                            <span th:text="${card.balance}"/>
+                    </div>
+                    <div class="container_2">
+                        <div class="button-group" style="align: center; width: 100%;">
+                            <button class="button share-widget">Добавить карту</button>
+                        </div>
+                    </div>
             </div>
-        </div>
-        <div class="containerBuffer"></div>
-        <div class="container2">
-            <div class="container_5">
-                <div class="container12">
-                    <p>Общий счёт:</p>
-                </div>
-                <div class="container14">
-                    <div class="container13">
-                        <p>&#8381;</p>
-                    </div>
-                    <div class="container15">
-                        <p th:text="${userById.bankAccount}"></p>
-                    </div>
-                </div>
-                <div class="container14">
-                    <div class="container13">
-                        <p>&#36;</p>
-                    </div>
-                    <div class="container15">
-                        <p>Hello</p>
-                    </div>
-                </div>
-                <div class="container14">
-                    <div class="container13">
-                        <p>&#128;</p>
-                    </div>
-                    <div class="container15">
-                        <p>Hello</p>
-                    </div>
-                </div>
             </div>
-            <div class="container_6">
-                <p th:each="card : ${userById.bankCard}">
-                    <span th:text="${card.balance}"/>
+
+            <!--Невидимое окошко (Настроить видимость!)-->
+            <div id="newWindow" class="hidden windowNew">
+
+                <div class="newContainer1">
+                    <h1>Создание карты:</h1>
+                </div>
+                <div style="height: 60%; background-color: white; padding: 20px;">
+
+                </div>
+                <div style="height: 20%; background-color: white;">
+                    <div class="button-group">
+                        <button  class="button share-widget">Отмена</button>
+                        <button  class="button share-widget">Сохранить карту</button>
+                    </div>
+                </div>
+
             </div>
-            <div class="btn-group">
-                <button class="button">Добавить карту</button>
-            </div>
+            <!--Конец невидимого окна-->
+
         </div>
 
+
+
+
+
+        <div class="col-md-4" style="background-color: green;">
+            <div class="container3">
+                <div class="container_3"></div>
+                <div class="container_4">
+                    <div class="button-group" style="align: center; width: 100%;">
+                        <div class="container_7">
+                            <button class="button" style="align: center; width: 100%;">Перевести</button>
+                        </div>
+                        <div class="container_7">
+                            <button class="button" style="align: center; width: 100%;">Пополнить</button>
+                        </div>
+                        <div class="container_7">
+                            <button class="button" style="align: center; width: 100%;">Валюта</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-<footer>
-
-</footer>
 
 
 <!--<p th:text="${userById.userName}"></p>-->
@@ -392,6 +424,84 @@ p {
 <!--    <span th:text="${lang.title}"/>-->
 <!--    <span th:text="${lang.description}"/>-->
 <!--</p>-->
+
+
+
+    <script type="text/javascript">
+
+        var app = angular.module("MAIN_PAGE", []);
+        app.controller("MAIN_PAGE_CONTROLLER", function($scope, $http) {
+            console.log("Start JS");
+            $scope.bankUsers = [];
+
+            $scope.getBankUsers = function() {
+                $http({
+                    url: '/findAllBankUser',
+                    method: 'GET'
+                }).then(function(response){
+                    $scope.bankUsers = response.data;
+                    console.log($scope.bankUsers);
+                })
+            }
+
+            $scope.saveBankUser = function() {
+                console.log($scope.bankUsers);
+                $http({
+                    url: '/saveBankUser',
+                    method: 'POST',
+                    data:
+                    {
+                        user_id : $scope.bankUser.user_id,
+                        userName : $scope.bankUser.userName,
+                        bankCard : null,
+                        email : $scope.bankUser.email,
+                        birthday : $scope.bankUser.birthday
+                    }
+                }).then(function(response){
+                    console.log(response);
+                });
+            }
+
+            $scope.getBankUserById = function(user_id) {
+                $http({
+                    url: '/user_id=' + user_id,
+                    method: 'GET'
+                }).then(function (response) {
+                    console.log(response);
+                })
+            }
+
+            $scope.saveBankCardForUser = function(user_id) {
+                $http({
+                    url: '/addCardForUser/user_id=' + user_id,
+                    method: 'POST',
+                    data:
+                    {
+                        card_id : $scope.bankUser.user_id,
+                        card_expiry_date : null,
+                        cvc2 : null,
+                        card_number : $scope.bankCard.card_number,
+                        balance : $scope.bankCard.balance,
+                        categoryCard : null
+                    }
+                }).then(function(response){
+                    console.log(response);
+                });
+            }
+
+        });
+
+
+        $('.share-widget').click(function() {
+            $('#newWindow').toggleClass('hidden');
+            $('.container1').toggleClass('hidden');
+            $('.container2').toggleClass('hidden');
+            $('.container3').toggleClass('hidden');
+        });
+
+
+    </script>
+
 
 </body>
 </html>
