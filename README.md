@@ -8,7 +8,7 @@
 * **Добавлнение пользователей**
 Добавлять пользователей на нынешней стадии разработки можно только через POST запрос, например:                 
     
-     $ curl -H 'Content-Type:application/json' -d '{"user_id" : 1, "userName" : "Гацуля Виктория Вячеславовна", "bankCard" : null, "email" : "viki@gmail.com", "birthday" : "2001-08-14"}' '127.0.0.1:8080/saveBankUser'
+     $ curl -H 'Content-Type:application/json' -d '{"user_id" : 1, "userName" : "Гацуля Виктория Вячеславовна", "bankCard" : null, "email" : "viktoria.gatsulia@gmail.com", "birthday" : "2001-08-14"}' '127.0.0.1:8080/saveBankUser'
 
 
 В приложении не настроен Spring Security, поэтому зайти в приложение можно под любым пользователем (если пользователь ещё не создан, то отобразится страница "Not found!").      
