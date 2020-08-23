@@ -241,11 +241,11 @@ p {
   color: #FFFFFF;
   text-align: center;
   text-decoration: none;
-  font-size: 32px;
+  font-size: 26px;
   font-family: Arial, Helvetica, sans-serif;
-  height: 20%;
+  height: 13%;
   background-color: green;
-  padding: 35px;
+  padding: 15px;
 }
 
 .windowNew {
@@ -257,6 +257,15 @@ p {
   position: relative;
   z-index:1;"
 }
+
+tr table {
+    width: 100%;
+}
+
+td {
+    width: 50%;
+}
+
     </style>
 </head>
 
@@ -357,9 +366,14 @@ p {
                         </div>
                     </div>
                     <div class="container_6">
-                        <p th:each="card : ${userById.bankCard}">
-                            <span th:text="${card.card_number}"/>
-                            <span th:text="${card.balance}"/>
+                        <table border="1">
+                            <th>Номер карты</th>
+                            <th>Баланс</th>
+                            <tr th:each="card : ${userById.bankCard}">
+                                <td th:text="${card.card_number}"/>
+                                <td th:text="${card.balance}"/>
+                            </tr>
+                        </table>
                     </div>
                     <div class="container_2">
                         <div class="button-group" style="align: center; width: 100%;">
@@ -375,16 +389,36 @@ p {
                 <div class="newContainer1">
                     <h1>Создание карты:</h1>
                 </div>
-                <div style="height: 60%; background-color: white; padding: 20px;">
-
+                <div style="height: 93%; background-color: white; padding: 20px;">
+<!--                    card_id : $scope.bankCard.card_id,-->
+<!--                    card_expiry_date : null,-->
+<!--                    cvc2 : $scope.bankCard.cvc2,-->
+<!--                    card_number : $scope.bankCard.card_number,-->
+<!--                    balance : $scope.bankCard.balance,-->
+<!--                    categoryCard : null-->
+                    <form>
+                        <div class="form-group">
+                            <label for="inputCardId">ID новой карты:</label>
+                            <input ng-model="bankCard.card_id" class="form-control" type="number" id="inputCardId">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCVC2">CVC2:</label>
+                            <input ng-model="bankCard.cvc2" class="form-control" type="number" id="inputCVC2">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCardNumber">Номер карты:</label>
+                            <input ng-model="bankCard.card_number" class="form-control" type="number" id="inputCardNumber">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputBalance">Начальный баланс:</label>
+                            <input ng-model="bankCard.balance" class="form-control" type="number" id="inputBalance">
+                        </div>
+                        <div class="button-group">
+                            <button  class="button share-widget">Отмена</button>
+                            <button  id="reload" class="button" type="submit" th:onclick="'getPropId(\'' + ${userById.user_id} + '\');'" ng-click="saveBankCardForUser()">Сохранить карту</button>
+                        </div>
+                    </form>
                 </div>
-                <div style="height: 20%; background-color: white;">
-                    <div class="button-group">
-                        <button  class="button share-widget">Отмена</button>
-                        <button  class="button share-widget">Сохранить карту</button>
-                    </div>
-                </div>
-
             </div>
             <!--Конец невидимого окна-->
 
@@ -427,7 +461,13 @@ p {
 
 
 
+<!--    myApp.controller('MyCtrl', ['$scope', '$stateParams',-->
+<!--    function ($scope, $stateParams) {-->
+<!--    console.log($stateParams.id);-->
+<!--    }]);-->
     <script type="text/javascript">
+
+        var idForUser = 0;
 
         var app = angular.module("MAIN_PAGE", []);
         app.controller("MAIN_PAGE_CONTROLLER", function($scope, $http) {
@@ -462,22 +502,14 @@ p {
                 });
             }
 
-            $scope.getBankUserById = function(user_id) {
+            $scope.saveBankCardForUser = function() {
+                console.log("SOS");
                 $http({
-                    url: '/user_id=' + user_id,
-                    method: 'GET'
-                }).then(function (response) {
-                    console.log(response);
-                })
-            }
-
-            $scope.saveBankCardForUser = function(user_id) {
-                $http({
-                    url: '/addCardForUser/user_id=' + user_id,
+                    url: '/addCardForUser/user_id=' + idForUser,
                     method: 'POST',
                     data:
                     {
-                        card_id : $scope.bankUser.user_id,
+                        card_id : $scope.bankCard.card_id,
                         card_expiry_date : null,
                         cvc2 : null,
                         card_number : $scope.bankCard.card_number,
@@ -491,7 +523,6 @@ p {
 
         });
 
-
         $('.share-widget').click(function() {
             $('#newWindow').toggleClass('hidden');
             $('.container1').toggleClass('hidden');
@@ -499,8 +530,22 @@ p {
             $('.container3').toggleClass('hidden');
         });
 
+        function getPropId(inputID){
+            idForUser = inputID;
+            console.log('inputID');
+            console.log(inputID);
+            console.log('idForUser');
+            console.log(idForUser);
+        }
+
+        $('#reload').click(function() {
+            location.reload();
+        });
+
+
 
     </script>
+
 
 
 </body>
