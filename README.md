@@ -81,4 +81,15 @@
   openjdk version "1.8.0_162"  
   OpenJDK Runtime Environment (build 1.8.0_162-8u162-b12-1-b12)  
   OpenJDK 64-Bit Server VM (build 25.162-b12, mixed mode)  
+  
+  ### Ошибка: одна или несколько таблиц несконфигурированы
+  
+ В некоторых случаях может возникнуть ситуация, когда Spring не сможет автоматически сконфигурировать таблицы, тогда нужно будет сделать вручную через консоль
+ 
+     $ cqlsh
+     > USE minibank;
+     > CREATE TABLE bankuser (user_id bigint, bankcard list<frozen<bankcard>>, username text, primary KEY (user_id ));
+     > CREATE TABLE bankcard (card_id bigint, balance double, card_expiry_date timestamp, card_number text, categorycard text, cvc2 int);, primary KEY (card_id));
+     
+     
 
