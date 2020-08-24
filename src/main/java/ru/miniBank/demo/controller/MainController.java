@@ -18,7 +18,7 @@ import java.util.Optional;
  * @version 1.0
  */
 @RestController
-@RequestMapping("/")
+@RequestMapping("/home")
 public class MainController {
     /** Поле для логирования */
     private static final Logger log = Logger.getLogger(MainController.class.getName());
@@ -48,7 +48,7 @@ public class MainController {
      */
     @GetMapping
     public ResponseEntity startPage() {
-        log.info("call start page");
+        log.info("call 'hello'");
         return ResponseEntity.ok("hello");
     }
 

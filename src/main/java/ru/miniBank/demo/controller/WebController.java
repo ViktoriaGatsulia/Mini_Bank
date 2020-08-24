@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class WebController {
     /** Поле для логирования */
     private static final Logger log = Logger.getLogger(WebController.class.getName());
@@ -40,6 +40,12 @@ public class WebController {
         log.info("Create WebController");
     }
 
+    @GetMapping
+    public String homePage() {
+        log.info("Call start page");
+        return "homePage";
+    }
+
     @GetMapping("/getUserById/id={id}")
     public String getUserById(Model model, @PathVariable Long id) {
         log.info("call /getUserById/id=" + id);
@@ -55,7 +61,7 @@ public class WebController {
 
     @GetMapping("/id={id}")
     public String getUserById2(Model model, @PathVariable Long id) {
-        log.info("call /getUserById/id=" + id);
+        log.info("call (TEST METHOD) /id=" + id);
 
         Optional<BankUser> userById= bankUserService.findById(id);
 
