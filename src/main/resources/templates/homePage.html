@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
@@ -9,6 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
     <style>
 
 
@@ -78,7 +81,7 @@ p {
   text-decoration: none;
   font-size: 26px;
   font-family: Arial, Helvetica, sans-serif;
-  height: 13%;
+  height: 15%;
   background-color: green;
   padding: 15px;
 }
@@ -137,10 +140,10 @@ td {
                     </tr>
                 </thead>
                 <tr ng-repeat="bankUser in bankUsers">
-                    <td style="width: 5%;" ng-model="user.id">{{bankUser.user_id}}</td>
+                    <td style="width: 5%;">{{bankUser.user_id}}</td>
                     <td style="width: 30%">{{bankUser.userName}}</td>
                     <td style="width: 30%">{{bankUser.email}}</td>
-                    <td style="width: 30%">{{bankUser.birthday}}</td>
+                    <td style="width: 30%">{{bankUser.birthday | date:'yyyy-MM-dd'}}</td>
                     <td style="width: 5%">
                         <div class="button-group" style="align: center; width: 100%;">
                             <a class="button" href="/getUserById/id={{bankUser.user_id}}">Выбрать</a>
@@ -149,8 +152,9 @@ td {
                 </tr>
             </tbody>
         </table>
+
         <div class="button-group" style="class: center; width: 50%;">
-            <button class="button share-widget" style="margin: 40% 0 0 47%;">Добавить пользователя</button>
+            <button class="button share-widget" style="margin: 0% 0 0 47%;">Добавить пользователя</button>
         </div>
     </div>
 
@@ -170,26 +174,28 @@ td {
             <form>
                 <div class="form-group">
                     <label for="inputUserId">ID нового пользователя:</label>
-                    <input ng-model="newBankUser.user_id" class="form-control" type="number" id="inputUserId">
+                    <input ng-model="bankUser.user_id" class="form-control" type="number" id="inputUserId">
                 </div>
                 <div class="form-group">
                     <label for="inputName">ФИО:</label>
-                    <input ng-model="newBankUser.userName" class="form-control" id="inputName">
+                    <input ng-model="bankUser.userName" class="form-control" id="inputName">
                 </div>
                 <div class="form-group">
                     <label for="inputEmail">Адрес электронной почты:</label>
-                    <input ng-model="bankCard.card_number" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <input ng-model="bankUser.email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
-                    <label class="control-label" style="display: inline-block; width:150px;">Дата рождения: </label>
-                    <input type="text" id="region" class="form-control" placeholder="Год" style="display: inline-block; width:120px;">
-                    <input type="text" id="district" class="form-control" placeholder="Месяц" style="display: inline-block; width:100px;">
-                    <input type="text" id="city" class="form-control" placeholder="День" style="display: inline-block; width:100px;">
+                    <label for="datetimepicker1">Дата рождения:</label>
+                    <div class="input-group" id="datetimepicker1">
+                        <input type="text" class="form-control" ng-model="bankUser.birthday"/>
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                    </div>
                 </div>
                 <div class="button-group">
                     <button class="button share-widget">Отмена</button>
-                    <button id="reload" class="button" type="submit" ng-click="">Сохранить пользователя</button>
+                    <button id="reload" class="button" type="submit" ng-click="saveBankUser()">Сохранить пользователя</button>
                 </div>
             </form>
         </div>
@@ -198,14 +204,12 @@ td {
 
 </div>
 
-<script type="text/javascript">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/moment-with-locales.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
 
-$('.ui-sortable tr').sort(function(a, b) { // сортируем
-  return +$(b).find('[data-name=sort]').attr('data-value') - +$(a).find('[data-name=sort]').attr('data-value');
-})
-.appendTo('.ui-sortable');
-
-        var idForUser = 0;
+    <script type="text/javascript">
 
         var app = angular.module("MAIN_PAGE", []);
         app.controller("MAIN_PAGE_CONTROLLER", function($scope, $http) {
@@ -242,25 +246,6 @@ $('.ui-sortable tr').sort(function(a, b) { // сортируем
                 });
             }
 
-            $scope.saveBankCardForUser = function() {
-                console.log("SOS");
-                $http({
-                    url: '/home/addCardForUser/user_id=' + idForUser,
-                    method: 'POST',
-                    data:
-                    {
-                        card_id : $scope.bankCard.card_id,
-                        card_expiry_date : null,
-                        cvc2 : null,
-                        card_number : $scope.bankCard.card_number,
-                        balance : $scope.bankCard.balance,
-                        categoryCard : null
-                    }
-                }).then(function(response){
-                    console.log(response);
-                });
-            }
-
         });
 
         $('.share-widget').click(function() {
@@ -281,6 +266,19 @@ $('.ui-sortable tr').sort(function(a, b) { // сортируем
         });
 
 
+        var maxDate = new Date();
+        maxYear = maxDate.getYear()-18;
+        maxDate.setYear(maxYear);
+
+        $(function () {
+          $('#datetimepicker1').datetimepicker({
+            locale: 'ru',
+            stepping:10,
+            format: 'YYYY-MM-DD',
+            defaultDate: moment('1970.01.01').format('YYYY-MM-DD'),
+            daysOfWeekDisabled:[0,6]
+          });
+        });
 
     </script>
 
