@@ -72,6 +72,16 @@ public class BankUser {
     @Transient
     private double bankAccount;
 
+    @Getter
+    @Setter
+    @Column
+    private double balanceDollar = 0;
+
+    @Getter
+    @Setter
+    @Column
+    private double balanceEuro = 0;
+
     public BankUser (long user_id, String userName, String email, Date birthday, List<BankCard> bankCard) {
         this.user_id = user_id;
         this.userName = userName;

@@ -28,6 +28,7 @@
 }
 
 .button-group .button {
+  float: left;
   width: 100%;
   background-color: #008000; /* Green */
   border: 1px solid green;
@@ -129,16 +130,16 @@ td {
 <div class="row" style="height: 600px; background-color: green; padding: 20px; margin: 10px 0 0 0;">
     <div class="container1">
         <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>ФИО</th>
+                    <th>Email</th>
+                    <th>Дата рождения</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody class="ui-sortable">
-                <thead>
-                    <tr>
-                        <th>№</th>
-                        <th>ФИО</th>
-                        <th>Email</th>
-                        <th>Дата рождения</th>
-                        <th></th>
-                    </tr>
-                </thead>
                 <tr ng-repeat="bankUser in bankUsers">
                     <td style="width: 5%;">{{bankUser.user_id}}</td>
                     <td style="width: 30%">{{bankUser.userName}}</td>
@@ -147,6 +148,8 @@ td {
                     <td style="width: 5%">
                         <div class="button-group" style="align: center; width: 100%;">
                             <a class="button" href="/getUserById/id={{bankUser.user_id}}">Выбрать</a>
+                            <a class="button" href="/getUserById/id={{bankUser.user_id}}">Удалить</a>
+                            <a class="button" href="/getUserById/id={{bankUser.user_id}}">Изменить</a>
                         </div>
                     </td>
                 </tr>
@@ -169,6 +172,8 @@ td {
 <!--            user_id : $scope.bankUser.user_id,-->
 <!--            userName : $scope.bankUser.userName,-->
 <!--            bankCard : null,-->
+<!--            balanceDollar : 0,-->
+<!--            balanceEuro : 0,-->
 <!--            email : $scope.bankUser.email,-->
 <!--            birthday : $scope.bankUser.birthday-->
             <form>
@@ -211,23 +216,47 @@ td {
 
     <script type="text/javascript">
 
+        /*
+            Ангулар js. Контроллер со стороны фронтенда
+        */
         var app = angular.module("MAIN_PAGE", []);
         app.controller("MAIN_PAGE_CONTROLLER", function($scope, $http) {
             console.log("Start JS");
+
+            /*
+                Массив пользователей банка
+            */
             $scope.bankUsers = [];
 
+            /*
+                GET запрос на сервер с просьбой
+                перечислить всех пользователей
+            */
             $scope.getBankUsers = function() {
                 $http({
                     url: '/home/findAllBankUser',
                     method: 'GET'
                 }).then(function(response){
+                    /*
+                        После выполнения функции
+                        записать всех пользователей
+                        в массив
+                    */
                     $scope.bankUsers = response.data;
                     console.log($scope.bankUsers);
                 })
             }
 
+            /*
+                Сделать доступным для тела список
+                всех пользователей
+            */
             $scope.getBankUsers();
 
+            /*
+                GET запрос на сервер с просьбой
+                сохранить нового пользователя
+            */
             $scope.saveBankUser = function() {
                 console.log($scope.bankUsers);
                 $http({
@@ -238,6 +267,8 @@ td {
                         user_id : $scope.bankUser.user_id,
                         userName : $scope.bankUser.userName,
                         bankCard : null,
+                        balanceDollar : 0,
+                        balanceEuro : 0,
                         email : $scope.bankUser.email,
                         birthday : $scope.bankUser.birthday
                     }
@@ -245,27 +276,38 @@ td {
                     console.log(response);
                 });
             }
-
         });
+        /* Конец части Ангулара */
 
+        /*
+            jQuery
+        */
+
+        /*
+            (Для элементов принадлежащих классу
+            share-widget)
+            скрыть / показать окна
+
+            # - селектор по ID
+            . - селектор для класса
+            * - селектор для всех элементов на странице
+        */
         $('.share-widget').click(function() {
             $('#newWindow').toggleClass('hidden');
             $('.container1').toggleClass('hidden');
         });
 
-        function getPropId(inputID){
-            idForUser = inputID;
-            console.log('inputID');
-            console.log(inputID);
-            console.log('idForUser');
-            console.log(idForUser);
-        }
-
+        /*
+            Перезагрузить страницу при
+            клике на элемент с ID 'reload'
+        */
         $('#reload').click(function() {
             location.reload();
         });
 
-
+        /*
+            Работа с датой (требует исправления)
+        */
         var maxDate = new Date();
         maxYear = maxDate.getYear()-18;
         maxDate.setYear(maxYear);
@@ -280,6 +322,17 @@ td {
           });
         });
 
+        /*
+            Нерабочая функция
+            Предпологала, что при клике на строку с
+            данными о пользователе произойдёт
+            переход на его личную страницу
+        */
+        // <tr data-href="site.com/whatever">
+        $('tr[data-href]').on("click", function() {
+            document.location = $(this).data('href');
+        });
+        /* Конец Query */
     </script>
 
 

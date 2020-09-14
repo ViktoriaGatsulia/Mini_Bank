@@ -2,6 +2,7 @@ package ru.miniBank.demo.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -126,4 +127,21 @@ public class MainController {
                 ? ResponseEntity.notFound().build()
                 : ResponseEntity.ok(byId);
     }
+
+//    @PutMapping(
+//            path = "{todoId}",
+//            consumes = {
+//                    MediaType.APPLICATION_JSON_VALUE,
+//                    "application/vnd.example.todo_payload+json"
+//            }
+//    )
+//    public ResponseEntity<Void> modifyTodo(@PathVariable UUID todoId,
+//                                           @RequestBody TodoPayload payload) {
+//        if (this.jdbcOperations.update("update todo set done = ?, task = ? where id = ?",
+//                payload.isDone(), payload.getTask()) == 1) {
+//            return ResponseEntity.noContent().build();
+//        }
+//
+//        return ResponseEntity.notFound().build();
+//    }
 }

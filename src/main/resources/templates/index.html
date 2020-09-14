@@ -187,7 +187,7 @@ p {
   width: 100%;
   padding: 2px 0px 0px 0px;
   margin: 20px 0px 10px 0px;
-  height: 7%;
+  height: 32px;
   border: 1.5px solid green;
   border-radius: 5px;
 }
@@ -269,7 +269,27 @@ td {
     </style>
 </head>
 
+<script>
+function CBR_XML_Daily_Ru(rates) {
+  function trend(current, previous) {
+    if (current > previous) return ' ▲';
+    if (current < previous) return ' ▼';
+    return '';
+  }
 
+  var USDrate = rates.Valute.USD.Value.toFixed(4).replace('.', ',');
+  var USD = document.getElementById('USD');
+  USD.innerHTML = USD.innerHTML.replace('00,0000', USDrate);
+  USD.innerHTML += trend(rates.Valute.USD.Value, rates.Valute.USD.Previous);
+
+  var EURrate = rates.Valute.EUR.Value.toFixed(4).replace('.', ',');
+  var EUR = document.getElementById('EUR');
+  EUR.innerHTML = EUR.innerHTML.replace('00,0000', EURrate);
+  EUR.innerHTML += trend(rates.Valute.EUR.Value, rates.Valute.EUR.Previous);
+}
+</script>
+<link rel="dns-prefetch" href="https://www.cbr-xml-daily.ru/" />
+<script src="//www.cbr-xml-daily.ru/daily_jsonp.js" async></script>
 
 
 <body style="background-color: green;" ng-app="MAIN_PAGE" ng-controller="MAIN_PAGE_CONTROLLER">
@@ -354,7 +374,7 @@ td {
                             <h4 style="color: #008000;">&#36;</h4>
                         </div>
                         <div class="container15">
-                            <p>0.0</p>
+                            <p th:text="${userById.balanceDollar}"></p>
                         </div>
                     </div>
                     <div class="container14">
@@ -362,7 +382,7 @@ td {
                             <h4 style="color: #008000;">&#128;</h4>
                         </div>
                         <div class="container15">
-                            <p>0.0</p>
+                            <p th:text="${userById.balanceEuro}"></p>
                         </div>
                     </div>
                     <div class="container_6">
@@ -432,7 +452,13 @@ td {
 
         <div class="col-md-4" style="background-color: green;">
             <div class="container3">
-                <div class="container_3"></div>
+                <div class="container_3">
+                    <div class="container12">
+                        <h5>Курсы валют (ЦБ):</h5>
+                    </div>
+                    <div id="USD">Доллар США $ — 00,0000 руб.</div>
+                    <div id="EUR">Евро € — 00,0000 руб.</div>
+                </div>
                 <div class="container_4">
                     <div class="button-group" style="align: center; width: 100%;">
                         <div class="container_7">
@@ -452,21 +478,6 @@ td {
     </div>
 
 
-<!--<p th:text="${userById.userName}"></p>-->
-<!--<p th:text="${user.toString()}"></p>-->
-<!--<p th:text="${T(Math).sqrt(5.0)}"></p>-->
-
-<!--<p th:each="lang : ${user.languageList}">-->
-<!--    <span th:text="${lang.title}"/>-->
-<!--    <span th:text="${lang.description}"/>-->
-<!--</p>-->
-
-
-
-<!--    myApp.controller('MyCtrl', ['$scope', '$stateParams',-->
-<!--    function ($scope, $stateParams) {-->
-<!--    console.log($stateParams.id);-->
-<!--    }]);-->
     <script type="text/javascript">
 
         var idForUser = 0;
@@ -474,38 +485,9 @@ td {
         var app = angular.module("MAIN_PAGE", []);
         app.controller("MAIN_PAGE_CONTROLLER", function($scope, $http) {
             console.log("Start JS");
-            $scope.bankUsers = [];
 
-            $scope.getBankUsers = function() {
-                $http({
-                    url: '/home/findAllBankUser',
-                    method: 'GET'
-                }).then(function(response){
-                    $scope.bankUsers = response.data;
-                    console.log($scope.bankUsers);
-                })
-            }
-
-            $scope.saveBankUser = function() {
-                console.log($scope.bankUsers);
-                $http({
-                    url: '/home/saveBankUser',
-                    method: 'POST',
-                    data:
-                    {
-                        user_id : $scope.bankUser.user_id,
-                        userName : $scope.bankUser.userName,
-                        bankCard : null,
-                        email : $scope.bankUser.email,
-                        birthday : $scope.bankUser.birthday
-                    }
-                }).then(function(response){
-                    console.log(response);
-                });
-            }
 
             $scope.saveBankCardForUser = function() {
-                console.log("SOS");
                 $http({
                     url: '/home/addCardForUser/user_id=' + idForUser,
                     method: 'POST',
